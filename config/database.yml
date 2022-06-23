@@ -19,13 +19,15 @@ default: &default
   #password: <%= ENV['MYSQL_PASSWORD'] %>
   username: cheese
   password: 111
-  #socket: /var/run/mysqld/mysqld.sock 
+  host: db
+  
 
 
 development:
   <<: *default
   #database: <%= ENV['DB_DATABASE'] %>_development
   database: myapp_development
+  
 
 
 test:
