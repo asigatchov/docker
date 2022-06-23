@@ -1,0 +1,22 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.body %></p>
+
+<ul>
+  <li><%= link_to "Изменить", edit_article_path(@article) %></li>
+  <li><%= link_to "Удалить", article_path(@article), data: {
+       turbo_method: :delete,           
+       turbo_confirm: "Вы уверены?"
+  } %></li>
+ </ul>
+
+
+
+<h2>Комментарии</h2>
+<%= render @article.comments %>
+
+
+
+<h2>Написать комментарий:</h2>
+<%= render 'comments/form' %>
+

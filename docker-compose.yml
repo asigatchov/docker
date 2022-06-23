@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  db:
+    image: 'mysql:8.0.29'
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'myapp'
+      DB_HOST: mysql
+      MYSQL_ROOT_USER: 'cheese'
+      MYSQL_ROOT_PASSWORD: '111'
+      MYSQL_HOST: '127.0.0.1'
+    ports:
+      - '3307:3306'
+    volumes:
+      - 'my-db:/var/lib/mysql'
+    container_name: datab
+  web:
+    build: .
+    command: bundle exec rails s -p 3000 
+    volumes:
+    - web-app:/myapp
+    ports:
+    - "3000:3000"
+    depends_on:
+    - db
+    restart: always
+
+volumes:
+  my-db: {}
+  web-app: {}

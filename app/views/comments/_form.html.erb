@@ -1,0 +1,21 @@
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter, "Комментатор:" %><br>
+    <%= form.text_field :commenter %>
+  </p>
+  <p>
+    <%= form.label :body, "Комментарий:" %><br>
+    <%= form.text_area :body %>
+  </p>
+ 
+  <p>
+  <%= form.label :status, "Статус:" %><br>
+  <%= form.select :status, ['для всех', 'для автора', 'черновик'], selected: 'для всех' %>
+  </p>
+
+  <div>
+  <%= form.submit "Сохранить" %>
+  </div>
+
+<% end %>
+
