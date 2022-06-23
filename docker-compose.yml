@@ -4,19 +4,20 @@ services:
     image: 'mysql:8.0.29'
     restart: always
     environment:
-      MYSQL_DATABASE: 'myapp'
-      DB_HOST: mysql
-      MYSQL_ROOT_USER: 'cheese'
-      MYSQL_ROOT_PASSWORD: '111'
-      MYSQL_HOST: '127.0.0.1'
+      MYSQL_DATABASE: 'myapp_development'
+      MYSQL_USER: 'cheese'
+      MYSQL_PASSWORD: '111'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+      MYSQL_INITDB_SKIP_TZINFO: 1
+      
     ports:
       - '3307:3306'
     volumes:
       - 'my-db:/var/lib/mysql'
-    container_name: datab
+    container_name: db
   web:
     build: .
-    command: bundle exec rails s -p 3000 
+    command: bundle exec rails s -p 3000  -b 0.0.0.0
     volumes:
     - web-app:/myapp
     ports:
