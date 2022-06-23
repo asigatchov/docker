@@ -19,7 +19,8 @@ default: &default
   #password: <%= ENV['MYSQL_PASSWORD'] %>
   username: cheese
   password: 111
-  #socket: /var/run/mysqld/mysqld.sock 
+  #host: имя контейнера 
+  host: db 
 
 
 development:
